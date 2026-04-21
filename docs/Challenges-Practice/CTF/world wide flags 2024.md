@@ -1,0 +1,23 @@
+# Reminds a funny story
+### Description
+**Can you drop 10 million hearts for Remind's Funny Stories to get flag?**
+When we install the app we can find out that it needs 10millionhearts to reveal the flag so went to jadx and found that its a flutter based apk 
+![](https://prod-files-secure.s3.us-west-2.amazonaws.com/51dfded5-2eb3-8139-90b1-0003750a523f/d084e5c2-c5b7-4c67-9e57-6b75566eb14a/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466SNT6Z543%2F20260421%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260421T184412Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHIaCXVzLXdlc3QtMiJGMEQCIDoVeRYqL418WAubLFv0q4KT24CB%2FaSk04J0rxRj2fzOAiAYiFm39Lw5Uu7UQlCkBP9RqCRNLtSkRXzK%2FrJmvfZk1yr%2FAwg7EAAaDDYzNzQyMzE4MzgwNSIMXOIV%2BDDPZ0UHQtEOKtwD9oZPciTdJ55P6qUTomcAOT47%2BE4Pwdzjr81LIg4mY1iirOGPOYb%2BNZOkZ5qmgm30mSrONjaTH7W66rgMguXaqw4vyR5%2BklbYLGyJe2YQEIdEWelyubI82X1TTi8LgsjbI2Or2K1RV4DglU%2B1fetVk8OJ7P%2FYqsznHHqBO8yzV4yHIJwoxbuHeSf0khRkusvxJz%2FRczZhso3YmuAZJAoEeQSf5UZPM3v7iydy8faQS7qR98ctB9998ITFucc2eAitLgc%2B63PyHct91ICwPPAcRiSlu6NfaqMJV9lD7uJxvUX%2F7u0rHoBAZvPMA%2BHNjBp7JPl24DnytUy5a9GIhGr7ec91rhdCl9v%2BWyB91MGSwcJQpW1Ovj5Ohoc9BJ6R6xDf1FASr7Mo6LPH6%2BRCTCKfhrf50AuVtUiy3VdpGuKiiyDYlwnWo%2BLlZJViii7Kdyk3nf9z7PeQhAf8AWxxKyh4qz6BurlH6mCCkLmP1%2BrFhAVWrSRYm0cIRenExPDq4B%2F0hw22QKys%2BhRUA5Mo%2BYDapjjJlid%2FVqcQtscxqOTCqxd%2BVH9nHf9LP1whNod1j39leZ1ikY0vg%2FL7DM2c44xelCSkwOwesU8C0WA7zol82eaRjpmHksnBT2KG0p4wpPiezwY6pgEWyeUd9De8AZiKyUc1S9sJSksDf6PxtwnVJMCeOjs9gvw7yWJO7o%2Bk0LurU3lOhbNjtjSmj9wNHIXrYflxZMfURvC0BmLnmc9UrBbZf5ul8kY%2B2DHiCpNoairmQkOD0ZYE2WBkt1xRTZzUmaqtfwnEIw6SEiwCwcKDWUysneNo3UkFz1jG9rB0RTwUe%2BFMD4E%2FX3cvQoVIi5WQ%2Bd6MRosU5q%2B952EA&X-Amz-Signature=84793d95261650c508c73edfb8575ad7d819acef1c99d22aed2dc84224d1b35e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+so we are going to use  [https://github.com/worawit/blutter](https://github.com/worawit/blutter) for decompiling flutter code 
+using blutter gives us 4 outputs 
+1. ./asm (This the assembly code for every function)
+2. pp.txt (Also called pool pointer, shows pointers of strings, objects. functions)
+3. objs.txt (Gives the list of all the objects created and used in the code)
+4. blutter_frida.js(This is the cool part after analyzing the function it automatically provides the frida script to bypass all the security checks)
+<empty-block/>
+so our first look would be in pp.txt because it contains pointers of strings and characters so our first search is for base64 and after using search function we can find a base64 string
+![](https://prod-files-secure.s3.us-west-2.amazonaws.com/51dfded5-2eb3-8139-90b1-0003750a523f/b8f13633-c19f-49c4-be90-869560a052dd/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466SNT6Z543%2F20260421%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260421T184412Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHIaCXVzLXdlc3QtMiJGMEQCIDoVeRYqL418WAubLFv0q4KT24CB%2FaSk04J0rxRj2fzOAiAYiFm39Lw5Uu7UQlCkBP9RqCRNLtSkRXzK%2FrJmvfZk1yr%2FAwg7EAAaDDYzNzQyMzE4MzgwNSIMXOIV%2BDDPZ0UHQtEOKtwD9oZPciTdJ55P6qUTomcAOT47%2BE4Pwdzjr81LIg4mY1iirOGPOYb%2BNZOkZ5qmgm30mSrONjaTH7W66rgMguXaqw4vyR5%2BklbYLGyJe2YQEIdEWelyubI82X1TTi8LgsjbI2Or2K1RV4DglU%2B1fetVk8OJ7P%2FYqsznHHqBO8yzV4yHIJwoxbuHeSf0khRkusvxJz%2FRczZhso3YmuAZJAoEeQSf5UZPM3v7iydy8faQS7qR98ctB9998ITFucc2eAitLgc%2B63PyHct91ICwPPAcRiSlu6NfaqMJV9lD7uJxvUX%2F7u0rHoBAZvPMA%2BHNjBp7JPl24DnytUy5a9GIhGr7ec91rhdCl9v%2BWyB91MGSwcJQpW1Ovj5Ohoc9BJ6R6xDf1FASr7Mo6LPH6%2BRCTCKfhrf50AuVtUiy3VdpGuKiiyDYlwnWo%2BLlZJViii7Kdyk3nf9z7PeQhAf8AWxxKyh4qz6BurlH6mCCkLmP1%2BrFhAVWrSRYm0cIRenExPDq4B%2F0hw22QKys%2BhRUA5Mo%2BYDapjjJlid%2FVqcQtscxqOTCqxd%2BVH9nHf9LP1whNod1j39leZ1ikY0vg%2FL7DM2c44xelCSkwOwesU8C0WA7zol82eaRjpmHksnBT2KG0p4wpPiezwY6pgEWyeUd9De8AZiKyUc1S9sJSksDf6PxtwnVJMCeOjs9gvw7yWJO7o%2Bk0LurU3lOhbNjtjSmj9wNHIXrYflxZMfURvC0BmLnmc9UrBbZf5ul8kY%2B2DHiCpNoairmQkOD0ZYE2WBkt1xRTZzUmaqtfwnEIw6SEiwCwcKDWUysneNo3UkFz1jG9rB0RTwUe%2BFMD4E%2FX3cvQoVIi5WQ%2Bd6MRosU5q%2B952EA&X-Amz-Signature=956ec6b8b15d8082846547a4b2b132aa77d078526c65ad2e9ff326bbf80e8ce5&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+and the below lines also look suspicious so using cyberchef we found out its aes encryption and we confirmed the following
+```plain text
+Data: CXHoq5mV1jMA+63Sa7+IwhmhZWUXDL69B+wSB01uEQc63QWB0ZIeOiZtheLJpD0s2sC3s2+9FiWyRA+c1Y+vYw==
+Key: 0h_g0d_sup3r_k3y_is_here_gsirjcu
+IV: 16_bytes_key_len
+```
+<empty-block/>
+<empty-block/>
+<empty-block/>

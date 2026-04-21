@@ -1,0 +1,13 @@
+Installing the app in emulator and opening it says hook me and if we inspect the jadx we can find the actual process that decrypts the flag 
+![](https://prod-files-secure.s3.us-west-2.amazonaws.com/51dfded5-2eb3-8139-90b1-0003750a523f/6aa4c1e9-fd00-48cd-ba84-e608d540f893/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4662HK7DDAY%2F20260421%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260421T184517Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHIaCXVzLXdlc3QtMiJIMEYCIQCAd3JYCgysRUtjRopegETgdXCEL7WmnhQzr5c3l8cvvwIhAMyFMrFhq1Z%2Bm1UXuyLDNR2UQqXEL7KZQG%2F0XzhzeXrqKv8DCDsQABoMNjM3NDIzMTgzODA1IgwZkLuxtWL66uu2yjcq3AMMPk5V23nxmcb4TYeRcdkDUUBr0J0zEooQKv%2FbWNGgoOsTyaGM3okvrKR0MEIduoozZePLSQEhMdeoHvfqdjEHEl61chwtKJvA7HZOcrTVKmuJI7Gn5oDWniZthUNa8Vf2xjO1hxaSF3KVrWVC8YsPLSToI15P2Ja0y6tG25cqJ1hPjflrLb%2FQLc1X3OyTbNFk%2F9TPQZT1cZ7W8ShCQOfTH3BrmsVotNNwSM3BgQFSgwlfuZEGMcQS1wqJ1ADm8BPnOy%2FrodurKp3KRBbOeiG9HGtVEFWQhrBCX9lohxk6S8frjSC2k1i2R5HhTz79Rkyjth9Xuol35y%2FCjBIwhuSFK%2FIyyVfnZ6TKp8h6ooz76DdGTipfe2pV3Qr%2FYg%2BOBZV%2BdPcY8V4Jli0tS%2FBVC90i6ol90riaqn%2F7D%2FkxlcyAn3GBfyIyVGk4hCxyCw%2FJh%2Fn2k9yekwW3sQamYZ%2FMEpLG8y8Y4NuICWbTLHPw6I6AFgvAUKDSWDH9BCL3PYJXPK6NYg4Ix2An6OrQEFkqaNmTysIOcrITplqBMUEpHib0OjNYxOKjkbJ0A9St3hz7IouT0HPYWNaYKZ8%2BlqsTtJvh6LMBSLXoAhj%2FExvnvWMrIHgwTRiDQyt2PhS50zCf%2BJ7PBjqkAej6nz3lTk7XVi4TWkn5A%2BYw5FLKCq8bmMXSB2z%2FDeRIFS3yC67vrPsPz%2BJ0FH6lHRrCVMXuOOVy%2F3REn7opLGam1rVEnKmmB80rJGXjaw3G0xzp3I2gbEmHN9lJqbmUNefXbUZLUbw9tJ5eWrwql3ed4zbsFiHXZfoA6g4LHu31LmTHpclui2jblw6TFUtOvATZvIKr7KlZtQg1TR6nDSahUxsc&X-Amz-Signature=15dbdebbb5e69adcac01d92e80c4fef43b453a0d55792a0da771c4d192890342&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+so in our code we have to just call get_flag function with argument int 4919
+since its a static class we do not need to create a object to call the function
+```javascript
+Java.perform(() => {
+    var a = Java.use("com.ad2001.frida0x2.MainActivity");
+    a.get_flag(4919);
+})
+```
+but when we try to load the flag using` frida -U -f com.ad2001.frida0x2 -l 0x2.js`
+this actually starts the app from cold boot and tries to execute before the app does which is its general behavior but we need to let the app initialize the text view which is in oncreate method so the command i used first is `frida-ps -Ua`  to find the currently running processes in my emulator and found that the pid of the app is 4312 and then i used `frida -U -p 4312 -l 0x2.js` targetting the certain process since there is no f flag it doesnt start from cold start and let the app create oncreate method and then injects our script
+<empty-block/>

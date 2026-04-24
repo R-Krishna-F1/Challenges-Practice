@@ -15,10 +15,7 @@
 
 import { Client } from "@notionhq/client";
 import { writeFileSync, mkdirSync, existsSync, rmSync } from "fs";
-import { join, dirname } from "path";
-import { createWriteStream } from "fs";
-import { pipeline } from "stream/promises";
-import { Readable } from "stream";
+import { join } from "path";
 import fetch from "node-fetch";
 
 // ── Config ────────────────────────────────────────────────────────────────────
@@ -72,7 +69,8 @@ async function downloadImage(url, destDir, filename) {
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    await pipeline(Readable.fromWeb(res.body), createWriteStream(localPath));
+    const buffer = await res.buffer();
+    writeFileSync(localPath, buffer);
     return `images/${localName}`;   // relative path used in markdown
   } catch (err) {
     console.warn(`  ⚠️  Could not download image: ${url} — ${err.message}`);

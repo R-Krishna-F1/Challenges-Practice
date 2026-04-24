@@ -9,3 +9,5 @@
 <page url="https://www.notion.so/344fded52eb380aaaafbe2522224cef8">info</page>
 <page url="https://www.notion.so/34afded52eb38062be96eac3737fa8c5">Hero CTF</page>
 <page url="https://www.notion.so/34afded52eb38030aa51cde317daec8d">Payatu Hiring CTF</page>
+<page url="https://www.notion.so/34bfded52eb38018aee6caf2fcfa48ba">Squirrel ctf</page>
+<page url="https://www.notion.so/34bfded52eb380e29197fff39d6df099">ShakthiCTF</page>

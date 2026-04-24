@@ -69,8 +69,8 @@ async function downloadImage(url, destDir, filename) {
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buffer = await res.buffer();
-    writeFileSync(localPath, buffer);
+    const arrayBuffer = await res.arrayBuffer();
+    writeFileSync(localPath, Buffer.from(arrayBuffer));
     return `images/${localName}`;   // relative path used in markdown
   } catch (err) {
     console.warn(`  ⚠️  Could not download image: ${url} — ${err.message}`);

@@ -23,7 +23,14 @@ and the output is
 so we can find the values at address using 
 ![](images/Saw-img-7.png)
 since m startsfor 108 and l starts form 10 we have to xor them in order to get the correct input
-10  XOR 108 = 102 = 'f'<br>11  XOR 103 = 108 = 'l'<br>24  XOR  40 = 48  = '0'<br>15  XOR 110 = 97  = 'a'<br>94  XOR  42 = 116 = 't'<br>49  XOR  88 = 105 = 'i'<br>12  XOR  98 = 110 = 'n'<br>15  XOR 104 = 103 = 'g'
+10  XOR 108 = 102 = 'f'
+11  XOR 103 = 108 = 'l'
+24  XOR  40 = 48  = '0'
+15  XOR 110 = 97  = 'a'
+94  XOR  42 = 116 = 't'
+49  XOR  88 = 105 = 'i'
+12  XOR  98 = 110 = 'n'
+15  XOR 104 = 103 = 'g'
 so the correct input is floating and after the xor test passes it creates a new file in current directory called h which we could see in above ghidra code so if we move to the path 
 ![](images/Saw-img-8.png)
 we could see the flag right there in hexdump HTB\{SawS0DCLing\}

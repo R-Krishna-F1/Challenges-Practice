@@ -50,106 +50,37 @@ extract all apk links
 Here are **all the direct APK links** found in the `xtiankisutsa/awesome-mobile-CTF` README:
 ---
 ## **Direct APK Downloads (from Mobile CTF Challenges)**
-<table header-row="true">
-<tr>
-<td>**#**</td>
-<td>**APK**</td>
-<td>**URL**</td>
-</tr>
-<tr>
-<td>1</td>
-<td>`mobile_one.apk`</td>
-<td>https://github.com/csivitu/CTF-Write-ups/blob/master/HacktivityCon%20CTF/Mobile/Mobile%20One/mobile_one.apk</td>
-</tr>
-<tr>
-<td>2</td>
-<td>`Keybox.apk`</td>
-<td>https://github.com/Hong5489/TrendMicroCTF2020/blob/main/mobile2/Keybox.apk</td>
-</tr>
-<tr>
-<td>3</td>
-<td>`validate.apk`</td>
-<td>http://shell-storm.org/repo/CTF/Insomnia'hack-2K11/Reverse/validate.apk</td>
-</tr>
-</table>
+
+| **#** | **APK** | **URL** |
+| --- | --- | --- |
+| 1 | `mobile_one.apk` | https://github.com/csivitu/CTF-Write-ups/blob/master/HacktivityCon%20CTF/Mobile/Mobile%20One/mobile_one.apk |
+| 2 | `Keybox.apk` | https://github.com/Hong5489/TrendMicroCTF2020/blob/main/mobile2/Keybox.apk |
+| 3 | `validate.apk` | http://shell-storm.org/repo/CTF/Insomnia'hack-2K11/Reverse/validate.apk |
+
 ---
 ## **APKs in ZIP Archives (Android Hacking Event)**
-<table header-row="true">
-<tr>
-<td>**#**</td>
-<td>**APK (inside ZIP)**</td>
-<td>**URL**</td>
-</tr>
-<tr>
-<td>4</td>
-<td>`AES-Decrypt.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2017/06/AES-Decrypt.apk_.zip</td>
-</tr>
-<tr>
-<td>5</td>
-<td>`Token-Generator.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2017/06/Token-Generator.apk_.zip</td>
-</tr>
-<tr>
-<td>6</td>
-<td>`FlagValidator.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2017/06/FlagValidator.apk_.zip</td>
-</tr>
-<tr>
-<td>7</td>
-<td>`YouCanHideButYouCannotRun.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2017/06/YouCanHideButYouCannotRun.apk_.zip</td>
-</tr>
-<tr>
-<td>8</td>
-<td>`WhyShouldIPay.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2017/06/WhyShouldIPay.apk_.zip</td>
-</tr>
-<tr>
-<td>9</td>
-<td>`esoteric.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2017/06/esoteric.apk_.zip</td>
-</tr>
-<tr>
-<td>10</td>
-<td>`strangecalculator.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2016/06/strangecalculator.apk_.zip</td>
-</tr>
-<tr>
-<td>11</td>
-<td>`ReverseMe.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2016/06/ReverseMe.apk_.zip</td>
-</tr>
-<tr>
-<td>12</td>
-<td>`aBunchOfNative.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2016/06/aBunchOfNative.apk_.zip</td>
-</tr>
-<tr>
-<td>13</td>
-<td>`dynChallenge.apk`</td>
-<td>https://team-sik.org/wp-content/uploads/2016/06/dynChallenge.apk_.zip</td>
-</tr>
-</table>
+
+| **#** | **APK (inside ZIP)** | **URL** |
+| --- | --- | --- |
+| 4 | `AES-Decrypt.apk` | https://team-sik.org/wp-content/uploads/2017/06/AES-Decrypt.apk_.zip |
+| 5 | `Token-Generator.apk` | https://team-sik.org/wp-content/uploads/2017/06/Token-Generator.apk_.zip |
+| 6 | `FlagValidator.apk` | https://team-sik.org/wp-content/uploads/2017/06/FlagValidator.apk_.zip |
+| 7 | `YouCanHideButYouCannotRun.apk` | https://team-sik.org/wp-content/uploads/2017/06/YouCanHideButYouCannotRun.apk_.zip |
+| 8 | `WhyShouldIPay.apk` | https://team-sik.org/wp-content/uploads/2017/06/WhyShouldIPay.apk_.zip |
+| 9 | `esoteric.apk` | https://team-sik.org/wp-content/uploads/2017/06/esoteric.apk_.zip |
+| 10 | `strangecalculator.apk` | https://team-sik.org/wp-content/uploads/2016/06/strangecalculator.apk_.zip |
+| 11 | `ReverseMe.apk` | https://team-sik.org/wp-content/uploads/2016/06/ReverseMe.apk_.zip |
+| 12 | `aBunchOfNative.apk` | https://team-sik.org/wp-content/uploads/2016/06/aBunchOfNative.apk_.zip |
+| 13 | `dynChallenge.apk` | https://team-sik.org/wp-content/uploads/2016/06/dynChallenge.apk_.zip |
+
 ---
 ## **Vulnerable Apps Section (Direct APK)**
-<table header-row="true">
-<tr>
-<td>**#**</td>
-<td>**APK**</td>
-<td>**URL**</td>
-</tr>
-<tr>
-<td>14</td>
-<td>`sieve.apk` (Vulnerable Password Manager)</td>
-<td>https://github.com/mwrlabs/drozer/releases/download/2.3.4/sieve.apk</td>
-</tr>
-<tr>
-<td>15</td>
-<td>`MoshZuk.apk`</td>
-<td>https://dl.dropboxusercontent.com/u/37776965/Work/MoshZuk.apk</td>
-</tr>
-</table>
+
+| **#** | **APK** | **URL** |
+| --- | --- | --- |
+| 14 | `sieve.apk` (Vulnerable Password Manager) | https://github.com/mwrlabs/drozer/releases/download/2.3.4/sieve.apk |
+| 15 | `MoshZuk.apk` | https://dl.dropboxusercontent.com/u/37776965/Work/MoshZuk.apk |
+
 ---
 ## **Other APK Locations (inside challenge directories)**
 These links point to challenge directories that contain APKs but the README doesn't name them directly:
@@ -274,62 +205,25 @@ Note: Since this is a binary APK file, the Wayback Machine may not always serve 
 **Status:** Unfortunately, I couldn't find any working mirror or archived version of this APK. The original blog post (`imthezuk.blogspot.co.ke`) is not on the Wayback Machine, and the Dropbox link has been dead for years. Multiple security resource repos (including the awesome-mobile-CTF repo and 0xSojalSec/Mobile-Application-Security) still point to the same dead Dropbox link.
 **Best alternative vulnerable apps to use instead of MoshZuk:**
 Since MoshZuk was a simple vulnerable Android app for learning, you can substitute it with these actively-maintained alternatives:
-<table header-row="true">
-<tr>
-<td>**Replacement App**</td>
-<td>**Download Link**</td>
-<td>**Notes**</td>
-</tr>
-<tr>
-<td>**Allsafe**</td>
-<td>https://github.com/t0thkr1s/allsafe/releases/latest/download/allsafe.apk</td>
-<td>15+ challenges, Frida practice included, very well maintained</td>
-</tr>
-<tr>
-<td>**OVAA** (Oversecured Vulnerable Android App)</td>
-<td>https://github.com/oversecured/ovaa</td>
-<td>Aggregates all popular Android vulnerabilities</td>
-</tr>
-<tr>
-<td>**Ostorlab Insecure App**</td>
-<td>https://github.com/Ostorlab/ostorlab_insecure_android_app</td>
-<td>Buildable from source, modern vulnerable app</td>
-</tr>
-<tr>
-<td>**VulnDroid**</td>
-<td>https://github.com/shahenshah99/VulnDroid</td>
-<td>Purpose-built vulnerable Android app</td>
-</tr>
-</table>
+
+| **Replacement App** | **Download Link** | **Notes** |
+| --- | --- | --- |
+| **Allsafe** | https://github.com/t0thkr1s/allsafe/releases/latest/download/allsafe.apk | 15+ challenges, Frida practice included, very well maintained |
+| **OVAA** (Oversecured Vulnerable Android App) | https://github.com/oversecured/ovaa | Aggregates all popular Android vulnerabilities |
+| **Ostorlab Insecure App** | https://github.com/Ostorlab/ostorlab_insecure_android_app | Buildable from source, modern vulnerable app |
+| **VulnDroid** | https://github.com/shahenshah99/VulnDroid | Purpose-built vulnerable Android app |
+
 ---
 ## **Summary Table**
-<table header-row="true" header-column="true">
-<tr>
-<td>**APK**</td>
-<td>**Status**</td>
-<td>**Alternate**</td>
-</tr>
-</table>
-<table header-row="true">
-<tr>
-<td>**APK**</td>
-<td>**Status**</td>
-<td>**Alternate**</td>
-</tr>
-<tr>
-<td>GrehAndroidMe.apk</td>
-<td>Archive found</td>
-<td>[**Wayback Machine directory**](https://web.archive.org/web/20250504111328/http://shell-storm.org/repo/CTF/GreHack-2012/reverse_engineering/100-GrehAndroidMe.apk/)</td>
-</tr>
-<tr>
-<td>validate.apk</td>
-<td>Archive exists</td>
-<td>[**Wayback Machine (May 2025)**](https://web.archive.org/web/20250504111933/http://shell-storm.org/repo/CTF/Insomnia'hack-2K11/Reverse/validate.apk)</td>
-</tr>
-<tr>
-<td>MoshZuk.apk</td>
-<td>Lost/dead</td>
-<td>Use **Allsafe**, **OVAA**, or **VulnDroid** as substitutes</td>
-</tr>
-</table>
+
+| **APK** | **Status** | **Alternate** |
+| --- | --- | --- |
+
+
+| **APK** | **Status** | **Alternate** |
+| --- | --- | --- |
+| GrehAndroidMe.apk | Archive found | [**Wayback Machine directory**](https://web.archive.org/web/20250504111328/http://shell-storm.org/repo/CTF/GreHack-2012/reverse_engineering/100-GrehAndroidMe.apk/) |
+| validate.apk | Archive exists | [**Wayback Machine (May 2025)**](https://web.archive.org/web/20250504111933/http://shell-storm.org/repo/CTF/Insomnia'hack-2K11/Reverse/validate.apk) |
+| MoshZuk.apk | Lost/dead | Use **Allsafe**, **OVAA**, or **VulnDroid** as substitutes |
+
 The Wayback Machine links should work for the first two - the captures are from as recently as May 2025, so the binary files should be accessible. For MoshZuk, the APK appears to be completely lost from the internet, so switching to one of the recommended substitutes would be your best option.

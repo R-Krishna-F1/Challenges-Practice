@@ -1,5 +1,7 @@
 When i tried to install the apk in my genymotion it showed an error which is 
-`adb install APKrypt.            <br>Performing Streamed Install<br>adb: failed to install APKrypt.apk: Failure [-124: Failed parse during installPackageLI: Targeting R+ (version 30 and above) requires the resources.arsc of installed APKs to be stored uncompressed and aligned on a 4-byte boundary]`
+`adb install APKrypt.            
+Performing Streamed Install
+adb: failed to install APKrypt.apk: Failure [-124: Failed parse during installPackageLI: Targeting R+ (version 30 and above) requires the resources.arsc of installed APKs to be stored uncompressed and aligned on a 4-byte boundary]`
 so what is this error?
 Android uses a technique called **memory-mapping** (mmap) to read `resources.arsc`.
 - If the file is **uncompressed and aligned**, the OS can read the resources directly from the APK file on the disk without loading the whole thing into RAM.

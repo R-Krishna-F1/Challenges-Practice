@@ -2,14 +2,14 @@ name: Sync Notion to GitHub
 
 on:
   schedule:
-    - cron: "0 2 * * *"   # Runs every day at 2:00 AM UTC — change as needed
-  workflow_dispatch:        # Lets you also trigger it manually from the Actions tab
+    - cron: "0 2 * * *"
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
-      contents: write       # Needed to commit and push files
+      contents: write
 
     steps:
       - name: Checkout repo
@@ -19,7 +19,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "npm"
 
       - name: Install dependencies
         run: npm install
@@ -28,7 +27,7 @@ jobs:
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
-          OUTPUT_DIR: ./docs         # All synced files go into /docs folder in your repo
+          OUTPUT_DIR: ./docs
         run: node sync.js
 
       - name: Commit and push changes
@@ -36,6 +35,5 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
-          # Only commit if there are actual changes
           git diff --staged --quiet || git commit -m "chore: sync Notion pages [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git push

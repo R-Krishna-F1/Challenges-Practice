@@ -41,7 +41,46 @@ const slugify = (title) =>
   (title ?? "Untitled")
     .trim()
     .replace(/[/\\?%*:|"<>]/g, "-")   // replace illegal path chars
-    .replace(/\s+/g, " ");
+    .replace(/\s+/g, "-");            // replace spaces with dashes for safe paths
+
+/** Encode a local image path for use in markdown links */
+const encodeImagePath = (p) =>
+  p.split("/").map(encodeURIComponent).join("/");
+
+/**
+ * Clean up markdown formatting issues from Notion's export:
+ * - Convert <br> tags to proper newlines
+ * - Convert HTML <table> tags to proper markdown tables
+ */
+function cleanMarkdown(md) {
+  // Replace <br> and <br/> with newlines
+  md = md.replace(/<br\s*\/?>/gi, "\n");
+
+  // Convert simple HTML tables to markdown tables
+  md = md.replace(/<table[\s\S]*?<\/table>/gi, (table) => {
+    const rows = [];
+    const rowMatches = table.match(/<tr[\s\S]*?<\/tr>/gi) || [];
+
+    for (const row of rowMatches) {
+      const cells = row.match(/<t[dh][\s\S]*?<\/t[dh]>/gi) || [];
+      const cellTexts = cells.map((cell) =>
+        cell
+          .replace(/<[^>]+>/g, "")
+          .trim()
+      );
+      rows.push("| " + cellTexts.join(" | ") + " |");
+    }
+
+    if (rows.length === 0) return table;
+
+    const colCount = rows[0].split("|").slice(1, -1).length;
+    const separator = "| " + Array(colCount).fill("---").join(" | ") + " |";
+    rows.splice(1, 0, separator);
+    return "\n" + rows.join("\n") + "\n";
+  });
+
+  return md;
+}
 
 /** Get the plain-text title of a page from its properties */
 async function getPageTitle(pageId) {
@@ -96,7 +135,7 @@ async function localiseImages(markdown, destDir, pageSlug) {
   for (const { full, alt, url, idx } of replacements) {
     const filename = `${pageSlug}-img-${idx}`;
     const localPath = await downloadImage(url, destDir, filename);
-    result = result.replace(full, `![${alt}](${localPath})`);
+    result = result.replace(full, `![${alt}](${encodeImagePath(localPath)})`);
   }
   return result;
 }
@@ -204,10 +243,13 @@ async function syncPage(pageId, currentDir, depth = 0) {
     markdown = `# ${title}\n\n> ⚠️ Content could not be fetched.\n`;
   }
 
-  // 2. Download images and rewrite links to local paths
+  // 2. Clean up formatting issues (br tags, HTML tables, etc.)
+  markdown = cleanMarkdown(markdown);
+
+  // 3. Download images and rewrite links to local paths
   markdown = await localiseImages(markdown, currentDir, slug);
 
-  // 3. Write the .md file
+  // 4. Write the .md file
   const mdPath = join(currentDir, `${slug}.md`);
   writeFileSync(mdPath, markdown, "utf8");
 

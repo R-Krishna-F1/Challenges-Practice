@@ -15,7 +15,7 @@
 
 import { Client } from "@notionhq/client";
 import { writeFileSync, mkdirSync, existsSync, rmSync } from "fs";
-import { join } from "path";
+import { join, relative, dirname } from "path";
 import fetch from "node-fetch";
 
 // ── Config ────────────────────────────────────────────────────────────────────
@@ -31,6 +31,10 @@ if (!NOTION_API_KEY || !ROOT_PAGE_ID) {
 
 const notion = new Client({ auth: NOTION_API_KEY });
 
+// Global map to store page information for the second pass (link resolution)
+// Map<cleanId, { title, slug, mdPath, markdown, currentDir, depth }>
+const pageRegistry = new Map();
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 /** Strip hyphens from a Notion UUID */
@@ -44,15 +48,21 @@ const slugify = (title) =>
     .replace(/\s+/g, "-");            // replace spaces with dashes for safe paths
 
 /** Encode a local image path for use in markdown links */
-const encodeImagePath = (p) =>
-  p.split("/").map(encodeURIComponent).join("/");
+const encodeImagePath = (p) => {
+  if (p.startsWith('http://') || p.startsWith('https://')) return p;
+  return p.split("/").map(encodeURIComponent).join("/");
+};
 
 /**
  * Clean up markdown formatting issues from Notion's export:
  * - Convert <br> tags to proper newlines
  * - Convert HTML <table> tags to proper markdown tables
+ * - Remove <empty-block/> tags
+ * - Convert <span underline="true">...</span> to HTML <u>...</u>
+ * - Strip remaining <span ...> tags
+ * - Fix page links
  */
-function cleanMarkdown(md) {
+function cleanMarkdown(md, currentFilePath) {
   // Replace <br> and <br/> with newlines
   md = md.replace(/<br\s*\/?>/gi, "\n");
 
@@ -77,6 +87,35 @@ function cleanMarkdown(md) {
     const separator = "| " + Array(colCount).fill("---").join(" | ") + " |";
     rows.splice(1, 0, separator);
     return "\n" + rows.join("\n") + "\n";
+  });
+
+  // Remove <empty-block/>
+  md = md.replace(/<empty-block\s*\/?>(<\/empty-block>)?/gi, "");
+
+  // Convert <span underline="true">...</span> to <u>...</u>
+  md = md.replace(/<span[^>]*underline="true"[^>]*>([\s\S]*?)<\/span>/gi, "<u>$1</u>");
+
+  // Strip remaining <span ...> tags, keeping inner text
+  md = md.replace(/<span[^>]*>([\s\S]*?)<\/span>/gi, "$1");
+
+  // Resolve <page url="...">Title</page> links
+  md = md.replace(/<page\s+url="[^"]*\/([a-fA-F0-9]{32})(?:\?[^"]*)?"[^>]*>([\s\S]*?)<\/page>/gi, (match, idStr, linkText) => {
+    const targetId = idStr.toLowerCase();
+    const targetPage = pageRegistry.get(targetId);
+
+    if (targetPage) {
+      // Calculate relative path from current file's directory to target file
+      const currentDir = dirname(currentFilePath);
+      let relPath = relative(currentDir, targetPage.mdPath);
+      // Ensure it starts with ./ or ../ for markdown link compatibility
+      if (!relPath.startsWith('.')) {
+        relPath = './' + relPath;
+      }
+      return `[${linkText}](${relPath})`;
+    }
+
+    // If not found in our synced pages, fallback to just text
+    return linkText;
   });
 
   return md;
@@ -110,7 +149,7 @@ async function downloadImage(url, destDir, filename) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const arrayBuffer = await res.arrayBuffer();
     writeFileSync(localPath, Buffer.from(arrayBuffer));
-    return `images/${localName}`;   // relative path used in markdown
+    return join(destDir, `images/${localName}`);   // return absolute path
   } catch (err) {
     console.warn(`  ⚠️  Could not download image: ${url} — ${err.message}`);
     return url;   // fall back to remote URL
@@ -121,11 +160,12 @@ async function downloadImage(url, destDir, filename) {
  * Replace Notion image URLs in markdown with locally-downloaded copies.
  * Notion image URLs look like:  ![…](https://prod-files-secure.s3…)
  */
-async function localiseImages(markdown, destDir, pageSlug) {
+async function localiseImages(markdown, destDir, pageSlug, currentFilePath) {
   const imgRegex = /!\[([^\]]*)\]\((https?:\/\/[^)]+)\)/g;
   const replacements = [];
   let match;
   let imgIndex = 0;
+  const downloadedUrls = new Map(); // url -> absLocalPath
 
   while ((match = imgRegex.exec(markdown)) !== null) {
     replacements.push({ full: match[0], alt: match[1], url: match[2], idx: imgIndex++ });
@@ -133,9 +173,26 @@ async function localiseImages(markdown, destDir, pageSlug) {
 
   let result = markdown;
   for (const { full, alt, url, idx } of replacements) {
-    const filename = `${pageSlug}-img-${idx}`;
-    const localPath = await downloadImage(url, destDir, filename);
-    result = result.replace(full, `![${alt}](${encodeImagePath(localPath)})`);
+    let absLocalPath;
+    if (downloadedUrls.has(url)) {
+      absLocalPath = downloadedUrls.get(url);
+    } else {
+      const filename = `${pageSlug}-img-${idx}`;
+      absLocalPath = await downloadImage(url, destDir, filename);
+      downloadedUrls.set(url, absLocalPath);
+    }
+
+    // Calculate relative path for markdown linking
+    let relLocalPath = absLocalPath;
+    if (!absLocalPath.startsWith('http')) {
+        const currentDir = dirname(currentFilePath);
+        relLocalPath = relative(currentDir, absLocalPath);
+        if (!relLocalPath.startsWith('.')) {
+            relLocalPath = './' + relLocalPath;
+        }
+    }
+
+    result = result.replace(full, `![${alt}](${encodeImagePath(relLocalPath)})`);
   }
   return result;
 }
@@ -219,20 +276,19 @@ async function getChildPageIds(pageId) {
 // ── Core recursive sync ────────────────────────────────────────────────────────
 
 /**
- * Recursively sync a Notion page and all its sub-pages.
+ * Pass 1: Recursively fetch a Notion page and all its sub-pages into memory.
  *
  * @param {string} pageId        Notion page ID
  * @param {string} currentDir    Local directory to write into
  * @param {number} depth         Current recursion depth (for logging)
  */
-async function syncPage(pageId, currentDir, depth = 0) {
+async function fetchPageTree(pageId, currentDir, depth = 0) {
   const indent = "  ".repeat(depth);
   const title  = await getPageTitle(pageId);
   const slug   = slugify(title);
+  const cId    = cleanId(pageId).toLowerCase();
 
-  console.log(`${indent}📄 ${title}`);
-
-  mkdirSync(currentDir, { recursive: true });
+  console.log(`${indent}📄 Fetching: ${title}`);
 
   // 1. Fetch markdown content
   let markdown;
@@ -243,23 +299,52 @@ async function syncPage(pageId, currentDir, depth = 0) {
     markdown = `# ${title}\n\n> ⚠️ Content could not be fetched.\n`;
   }
 
-  // 2. Clean up formatting issues (br tags, HTML tables, etc.)
-  markdown = cleanMarkdown(markdown);
-
-  // 3. Download images and rewrite links to local paths
-  markdown = await localiseImages(markdown, currentDir, slug);
-
-  // 4. Write the .md file
   const mdPath = join(currentDir, `${slug}.md`);
-  writeFileSync(mdPath, markdown, "utf8");
 
-  // 4. Get child pages and recurse into a sub-folder named after this page
+  // Register the page for later link resolution
+  pageRegistry.set(cId, {
+    id: pageId,
+    cleanId: cId,
+    title,
+    slug,
+    mdPath,
+    markdown,
+    currentDir,
+    depth
+  });
+
+  // 2. Get child pages and recurse
   const childIds = await getChildPageIds(pageId);
   if (childIds.length > 0) {
     const subDir = join(currentDir, slug);
     for (const childId of childIds) {
-      await syncPage(childId, subDir, depth + 1);
+      await fetchPageTree(childId, subDir, depth + 1);
     }
+  }
+}
+
+/**
+ * Pass 2: Process markdown, download images, and write files to disk.
+ */
+async function processAndWritePages() {
+  console.log("\n🔄 Processing markdown and downloading images...");
+
+  for (const [cId, page] of pageRegistry.entries()) {
+    const indent = "  ".repeat(page.depth);
+    console.log(`${indent}💾 Saving: ${page.title}`);
+
+    mkdirSync(page.currentDir, { recursive: true });
+
+    let md = page.markdown;
+
+    // 1. Clean up formatting issues, resolve page links
+    md = cleanMarkdown(md, page.mdPath);
+
+    // 2. Download images and rewrite links to local paths
+    md = await localiseImages(md, page.currentDir, page.slug, page.mdPath);
+
+    // 3. Write the .md file
+    writeFileSync(page.mdPath, md, "utf8");
   }
 }
 
@@ -276,7 +361,11 @@ async function main() {
   }
   mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  await syncPage(ROOT_PAGE_ID, OUTPUT_DIR);
+  // Pass 1: Fetch all pages
+  await fetchPageTree(ROOT_PAGE_ID, OUTPUT_DIR);
+
+  // Pass 2: Process and write all pages
+  await processAndWritePages();
 
   console.log("\n✅  Sync complete!");
 }

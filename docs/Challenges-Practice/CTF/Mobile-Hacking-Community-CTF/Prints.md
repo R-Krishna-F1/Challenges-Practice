@@ -31,10 +31,10 @@ onAuthenticationError — a callback the universal script doesn't hook.
 **Script 2 — Time check bypass**
 What it does: Hooks the native method f14e32() and makes it return a huge number.
 Why we need it: Inside onAuthenticationSucceeded() the app does this check:
-if
- (System.currentTimeMillis() - startTime \> 
-Integer.parseInt(f14e32())) \{ Toast.makeText(..., "Wrong 
-fingerprint!").show(); return; \}
+```python
+if (System.currentTimeMillis() - startTime > 
+Integer.parseInt(f14e32())) { Toast.makeText(..., "Wrong fingerprint!").show(); return; }
+```
 f14e32()
  returns a time limit in milliseconds. If you take longer than that to 
 authenticate, it shows "Wrong fingerprint" and blocks login. By 
@@ -43,6 +43,16 @@ Why
  it's obfuscated: The method name f14e32 is meaningless on purpose — the
  developer obfuscated it to make reverse engineering harder. We found it
  by reading the jadx decompiled source.
+**Script**
+```javascript
+Java.perform(function() {
+    var MainActivity = Java.use("com.mobilehackingcommunity.prints.MainActivity");
+    MainActivity.f14e32.implementation = function() {
+        return "999999999";
+    };
+    console.log("[+] Time check bypassed");
+});
+```
 ---
 **Script 3 — Signature bypass**
 What it does: Hooks isAppSignatureValid() in both activities and forces it to always return true.
@@ -56,6 +66,20 @@ Why
  it's in both activities: MainActivity checks it silently. HomeActivity 
 checks it immediately in onCreate and kills itself if it fails — so we 
 must bypass both.
+**Scrpit**
+```javascript
+Java.perform(function() {
+    var MainActivity = Java.use("com.mobilehackingcommunity.prints.MainActivity");
+    MainActivity.isAppSignatureValid.implementation = function() {
+        return true;
+    };
+    var HomeActivity = Java.use("com.mobilehackingcommunity.prints.HomeActivity");
+    HomeActivity.isAppSignatureValid.implementation = function() {
+        return true;
+    };
+    console.log("[+] Signatures bypassed");
+});
+```
 ---
 **Script 4 — Genymotion error intercept**
 What
@@ -73,6 +97,19 @@ Why .new(null,0)not.new(null,0)not.new(null,
 AndroidX only takes 2 arguments (CryptoObject, int) not 3. We pass null 
 for the CryptoObject (no crypto needed) and 0 for the authenticator 
 type.
+**Script**
+```javascript
+Java.perform(function() {
+    var cls = Java.use("androidx.biometric.BiometricPrompt$AuthenticationCallback");
+    cls.onAuthenticationError.implementation = function(code, msg) {
+        console.log("[*] Error " + code + " intercepted -> forcing success");
+        var result = Java.use("androidx.biometric.BiometricPrompt$AuthenticationResult")
+            .$new(null, 0);
+        this.onAuthenticationSucceeded(result);
+    };
+    console.log("[+] Error interceptor ready");
+});
+```
 ---
 **Summary:**
 Script
@@ -81,3 +118,8 @@ Needed on real device: YES — Needed on Genymotion: PARTIAL
 Script 2 — Time check — Bypasses f14e32() time limit — Needed on real device: YES — Needed on Genymotion: YES
 Script 3 — Signature bypass — Bypasses isAppSignatureValid() — Needed on real device: YES — Needed on Genymotion: YES
 Script 4 — Error intercept — Bypasses Genymotion no-hardware error — Needed on real device: NO — Needed on Genymotion: YES
+
+You could either paste every script or make a single file to run it in a single go
+![](images/Prints-img-3.png)
+Hence the flag is **`MHC{by3_by3-f1ng3r_b4nk}`**
+<empty-block/>

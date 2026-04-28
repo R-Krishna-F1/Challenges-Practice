@@ -2,11 +2,11 @@ By understanding the source code from jadx we can get to know that the string is
 Using **JNI**, our Java code can call functions from **C/C++ libraries** (compiled as `.so` files), allowing the app to perform computationally heavy tasks much faster for a smoother run.
 since c++ is faster than java
 cd /data/data/jahkeer.aseem.diva/lib/
-<empty-block/>
+
 then use strings libdivajni.so \| less to get the strings and one of them is the password
 and checked for password entering every string and finally confrmed that the password is olsdfgad;lh
-<empty-block/>
-<empty-block/>
+
+
 ### Ghidra
 ```c
 undefined1
@@ -39,8 +39,7 @@ pcVar3 = pcVar3 + (ulong)bVar7 * -2 + 1;
 return 0;
 }
 ```
-<empty-block/>
+
 we will set the user inputs text as pcVar3 and lVar4 as 11 (in hex 0xb)  and if lVar4 becomes 0 we return a boolean value uVar6  so the lvar4 becomes 0 slowly after executing each loop
-<empty-block/>
+
 where cVar1 as pcVar5 which is the password it is comapring to cVar2 which is pcvar3 which is users input and we are comparing  for 11 times and make the lvar4 as 0
-<empty-block/>

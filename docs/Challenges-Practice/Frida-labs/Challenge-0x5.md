@@ -1,6 +1,6 @@
 The app contains only a textview and a function similar to previous function 
 but if you observe code we can see the function changes the ui of the app
-![](images/Challenge-0x5-img-0.png)
+![](./images/Challenge-0x5-img-0.png)
 ui updates on based on threads and android has a main thread which is also called looper() which runs the functions and updates users screen executing functions in a order this is closely related to android life cycles
 using basic frida like we did to previous challenges we just did mathematics and logic reasoning but not updating the screen because 
 in order to implement these kind of functions we have link with main thread so the process will be

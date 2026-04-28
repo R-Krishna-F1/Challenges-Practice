@@ -26,7 +26,7 @@ findViewById(R.id.button1).setOnClickListener(failHandler);
             }
 ```
 the code tells us there are 9 button and clicking all other 8 button fails and the 9th button works which upon clicking it will take us to FlagActivity
-<empty-block/>
+
 ```java
 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 text.setText("Read the code: "+progress+"%");

@@ -1,16 +1,16 @@
-<page url="https://www.notion.so/33ffded52eb380d2a539cab4a98bcce2">Eschaton </page>
-<page url="https://www.notion.so/341fded52eb38063a302f250f28804f6">BYUCTF</page>
-<page url="https://www.notion.so/343fded52eb380a19558e14c21c08a7f">1337 Live Integre</page>
-<page url="https://www.notion.so/344fded52eb380d282c0e7990e830763">m0lecon 2025</page>
-<page url="https://www.notion.so/344fded52eb3807ab591c31101f9754b">world wide flags 2024</page>
-<page url="https://www.notion.so/345fded52eb3802da245c669c8997ed2">TCP1P</page>
-<page url="https://www.notion.so/345fded52eb380e39e77e3f934e9aeb4">TUCTF</page>
-<page url="https://www.notion.so/348fded52eb380d6939dd410b93f63cd">Cyberchaze</page>
-<page url="https://www.notion.so/344fded52eb380aaaafbe2522224cef8">info</page>
-<page url="https://www.notion.so/34afded52eb38062be96eac3737fa8c5">Hero CTF</page>
-<page url="https://www.notion.so/34afded52eb38030aa51cde317daec8d">Payatu Hiring CTF</page>
-<page url="https://www.notion.so/34bfded52eb38018aee6caf2fcfa48ba">Squirrel ctf</page>
-<page url="https://www.notion.so/34bfded52eb380e29197fff39d6df099">ShakthiCTF</page>
-<page url="https://www.notion.so/34cfded52eb380c49a08c4e61a79de34">Mobile Hacking Community CTF</page>
-<page url="https://www.notion.so/34efded52eb380e587d6f403b757846c">P3RF3CTR00T CTF</page>
-<page url="https://www.notion.so/34ffded52eb3808ba183e9affa436e9f">Pwnsec ctf</page>
+[Eschaton ](./CTF/Eschaton.md)
+[BYUCTF](./CTF/BYUCTF.md)
+[1337 Live Integre](./CTF/1337-Live-Integre.md)
+[m0lecon 2025](./CTF/m0lecon-2025.md)
+[world wide flags 2024](./CTF/world-wide-flags-2024.md)
+[TCP1P](./CTF/TCP1P.md)
+[TUCTF](./CTF/TUCTF.md)
+[Cyberchaze](./CTF/Cyberchaze.md)
+[info](./CTF/info.md)
+[Hero CTF](./CTF/Hero-CTF.md)
+[Payatu Hiring CTF](./CTF/Payatu-Hiring-CTF.md)
+[Squirrel ctf](./CTF/Squirrel-ctf.md)
+[ShakthiCTF](./CTF/ShakthiCTF.md)
+[Mobile Hacking Community CTF](./CTF/Mobile-Hacking-Community-CTF.md)
+[P3RF3CTR00T CTF](./CTF/P3RF3CTR00T-CTF.md)
+[Pwnsec ctf](./CTF/Pwnsec-ctf.md)

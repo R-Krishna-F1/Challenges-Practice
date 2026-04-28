@@ -9,4 +9,3 @@
         startActivity(intent);
     }
 ```
-<empty-block/>

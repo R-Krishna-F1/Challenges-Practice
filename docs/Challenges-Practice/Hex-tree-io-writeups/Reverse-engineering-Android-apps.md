@@ -42,4 +42,3 @@ strings \<path to file\> and the password is nativeSecretsCanBeFoundToo
 submitted the password to the app and got the 3rd flag HXT\{from-java-to-native\}
 ### Flag6
 In this challenge there is a toast message that its making when we click the enter on zip code so when we find that where that log message is appearing we could find that logic and in that actvity class the api key is hardcoded and in the format of the flag 
-<empty-block/>

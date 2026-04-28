@@ -1,7 +1,7 @@
 ## Notice:
 **This challenge was done under lab circumstances where the secret library was given so if you try to practice it with below code you might not get output**
-<empty-block/>
-<empty-block/>
+
+
 upon opening the challenge we can find this file [server.py](http://server.py) lets take close look at it
 ```python
 #!/usr/bin/env python3
@@ -78,7 +78,7 @@ while True:
             print("Choose correctly!")
             continue
 ```
-<empty-block/>
+
 in line 37 we can see the my_hash function is being used to transform input data and then compare it to the the defined table in the code so to reveal the flag we have to reverse the logic find the input and reveal flag I used vs code 
 since its a hash we cant replicate exactly because its what happens was there is a sum variable which takes our input converts to ascii and them up and finally checks the sum
 for example:
@@ -110,6 +110,5 @@ original_hex = "32323931" # This is the hex for sum 390
 print(f"One possible string: {recreate_string(original_hex)}")
 ```
 so the output for the hex 32323931 is zzzzzzzzzzzzzzzzzz_ which matches to admin so we start the code and we get the flag
-![](images/Hash-3-Collision-img-0.png)
+![](./images/Hash-3-Collision-img-0.png)
 `TCP1P{1_r34lly_h0p3_th4t_y0u_c0ns1der_ab0u7_c0ll1sion5_wh3n_m4k1ng_h4sh_func7i0n5}`
-<empty-block/>

@@ -1,13 +1,13 @@
 So after installing the app we will be provided with this string so we it provided 2 methods to get the use frida hook or flip the bit (might be this is how the password is being decrypted)
-<empty-block/>
-![](images/A-Strange-Door-img-0.png)
-<empty-block/>
+
+![](./images/A-Strange-Door-img-0.png)
+
 so lets go to jadx and we can notice its calling 2 native functions decryotflag() and checkPasscode() from the native file ctf
-![](images/A-Strange-Door-img-1.png)
-<empty-block/>
+![](./images/A-Strange-Door-img-1.png)
+
 so lets go to ghidra and analyze both the functions so  
-![](images/A-Strange-Door-img-2.png)
-<empty-block/>
+![](./images/A-Strange-Door-img-2.png)
+
 ### The Passcode Storage
 The code allocates 6 bytes for __ptr and then assigns a hex value to it:
 __ptr = 0x38363936;
@@ -19,13 +19,13 @@ Hex Byte	ASCII Character
 0x39	9
 0x36	6
 0x38	8
-<empty-block/>
+
 so probably the challenge tried to mislead us saying its a 6 digit charecter so after we enter 6968 we get the flag
-![](images/A-Strange-Door-img-3.png)
-<empty-block/>
+![](./images/A-Strange-Door-img-3.png)
+
 also there decryptflag() function its work checking out so 
-![](images/A-Strange-Door-img-4.png)
-<empty-block/>
+![](./images/A-Strange-Door-img-4.png)
+
 
 | **Variable** | **Hex Value** | **Reversed (Little-Endian)** | **ASCII Translation** |
 | --- | --- | --- | --- |
@@ -48,4 +48,3 @@ Concatenating all these parts together in the order they appear on the stack:
 **Final Flag:**
 **`PAYATU{ASDS73V3NS7R@NG3POP}`**
 ###
-<empty-block/>

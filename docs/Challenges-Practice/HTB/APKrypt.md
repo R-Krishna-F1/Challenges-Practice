@@ -22,13 +22,13 @@ keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddeb
 apksigner sign --ks debug.keystore --ks-pass pass:android APKrypt_aligned.apk
 ```
 if we open the app we can see its waiting for an input 
-![](images/APKrypt-img-0.png)
+![](./images/APKrypt-img-0.png)
 so to view the code you go to the jadx and find the vip code we entered is converting into a md5 hash and then compared to hardcoded string and then the flag is encrypted with aes and the key is alos present down in the decrypt and key generation functions below
-![](images/APKrypt-img-1.png)
+![](./images/APKrypt-img-1.png)
 above is the function which checks your entered vip code and reveals the flag and below are the functions that are used to decrypt and encrypt functions for the strings and aes keys
-![](images/APKrypt-img-2.png)
+![](./images/APKrypt-img-2.png)
 since md5 is a hash we cant find it simply like base64 or aes decrypted strings so its better to findout the flag since you already have the key we can use cyberchef and use aes decryption
-![](images/APKrypt-img-3.png)
+![](./images/APKrypt-img-3.png)
 also we can also do it by frida which we can write a script which results the string comparison always true so the js code will be
 ```javascript
 Java.perform(() => {
@@ -44,5 +44,5 @@ Java.perform(() => {
 })
 ```
 and the final output will be getting the flag
-![](images/APKrypt-img-4.png)
+![](./images/APKrypt-img-4.png)
 HTB\{3njoy_y0ur_v1p_subscr1pt1on\}

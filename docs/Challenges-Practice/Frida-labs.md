@@ -1,12 +1,12 @@
-<page url="https://www.notion.so/326fded52eb380f586eec221994eb491">Frida</page>
-<page url="https://www.notion.so/326fded52eb38081acfcf8a4b5caa2bc">challenge 0x1</page>
-<page url="https://www.notion.so/326fded52eb380ddae42dca06b1bdb59">Challenge 0x2</page>
-<page url="https://www.notion.so/326fded52eb380eb97c8d305e704b7ea">Challenge 0x3</page>
-<page url="https://www.notion.so/326fded52eb38050947ccf103ea4e5a3">Challenge 0x4</page>
-<page url="https://www.notion.so/327fded52eb380f3a86ec79ef37b3112">Challenge 0x5</page>
-<page url="https://www.notion.so/329fded52eb380879063dac4b1450177">Challenge 0x6</page>
-<page url="https://www.notion.so/329fded52eb3807facfbd6eb3b04e8af">Challenge 0x7</page>
-<page url="https://www.notion.so/329fded52eb380e0ba0bc0796b0a2c41">Challenge 0x8</page>
-<page url="https://www.notion.so/338fded52eb380e6adabc948dd142ea7">challenge 0x9</page>
-<page url="https://www.notion.so/339fded52eb380c292eff62de087acd1">challenge 0xA</page>
-<page url="https://www.notion.so/339fded52eb3809ebea5fd3f5f07b933">challenge 0xB</page>
+[Frida](./Frida-labs/Frida.md)
+[challenge 0x1](./Frida-labs/challenge-0x1.md)
+[Challenge 0x2](./Frida-labs/Challenge-0x2.md)
+[Challenge 0x3](./Frida-labs/Challenge-0x3.md)
+[Challenge 0x4](./Frida-labs/Challenge-0x4.md)
+[Challenge 0x5](./Frida-labs/Challenge-0x5.md)
+[Challenge 0x6](./Frida-labs/Challenge-0x6.md)
+[Challenge 0x7](./Frida-labs/Challenge-0x7.md)
+[Challenge 0x8](./Frida-labs/Challenge-0x8.md)
+[challenge 0x9](./Frida-labs/challenge-0x9.md)
+[challenge 0xA](./Frida-labs/challenge-0xA.md)
+[challenge 0xB](./Frida-labs/challenge-0xB.md)

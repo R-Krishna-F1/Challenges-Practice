@@ -1,9 +1,9 @@
 After opening the app we will be provided with the screen and when we click login we get the authentication error message
-![](images/Prints-img-0.png)
+![](./images/Prints-img-0.png)
 so we go to jadx and analyse it and we can find if the authentication is a success in main activity it sends an intent with a label SECRET_KEY to home activity which contains the return value of a native function 
-![](images/Prints-img-1.png)
+![](./images/Prints-img-1.png)
 The home activity takes the function and comapares it with the return value of another native function 
-![](images/Prints-img-2.png)
+![](./images/Prints-img-2.png)
 so lets actually understand how the app flow works
 **The App's Flow (from jadx):**
 tap
@@ -120,6 +120,5 @@ Script 3 — Signature bypass — Bypasses isAppSignatureValid() — Needed on r
 Script 4 — Error intercept — Bypasses Genymotion no-hardware error — Needed on real device: NO — Needed on Genymotion: YES
 
 You could either paste every script or make a single file to run it in a single go
-![](images/Prints-img-3.png)
+![](./images/Prints-img-3.png)
 Hence the flag is **`MHC{by3_by3-f1ng3r_b4nk}`**
-<empty-block/>

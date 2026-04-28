@@ -33,7 +33,7 @@ Once Frida knows which device to use, it needs to know which app to inject your 
 - **`U`**: List processes on the USB device.
 - **`a`**: List **applications** specifically (usually gives you the Name and Identifier).
 - **`i`**: List all installed packages, even if they aren't running.
-<empty-block/>
+
 # How frida works
 The  app contains specific functions. When we want to apply our own logic to
  those functions, we use Frida's dynamic instrumentation.
@@ -45,7 +45,7 @@ Since this happens at the **machine instruction level**
  in the background, the app remains unaware that our script intercepted 
 the call. The function completes normally and the app continues to the 
 next operations seamlessly.
-<empty-block/>
+
 # How frida handles the main thread
 ### Option 1
 `Java.performNow()` attaches the current thread to the Java VM, ensuring Java operations can execute safely.
@@ -54,4 +54,3 @@ We use `Java.choose()` and specify the target **class name** (like `com.example.
 We can then modify those live objects using our Frida script.
 ### Option 2
 use `Java.schedulesOnMainThread(function(){     });`
-<empty-block/>

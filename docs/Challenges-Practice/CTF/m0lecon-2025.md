@@ -5,13 +5,13 @@ The txt contains base64 encoded strings
 Encryption Output: XZdGZ7pi9Ih4wHL/8Mj0q8/o6i/utS2tIsigHXCaEzpTXgesqtnLNJMbagqYH67ut9dbxhXC28w=**
 tried to decode them using cyberchef but it generated some weird output so decided to view the source code 
 Installed the apk in emulator and it has 2 options encrypt and decrypt and it says decrypt is under construction so no need to worry about that and we goto encrypt option
-![](images/m0lecon-2025-img-0.png)
+![](./images/m0lecon-2025-img-0.png)
 so now decrypt asks for a input and when we give one it gives 2 outputs similar to the encrypted.txt file so this must be the one 
-![](images/m0lecon-2025-img-1.png)
+![](./images/m0lecon-2025-img-1.png)
 and after the click we get weird output
-![](images/m0lecon-2025-img-2.png)
+![](./images/m0lecon-2025-img-2.png)
 we go to the source code and we cant find anything in main function so we continue to explore more functions and we find something interesting we found EncryotedFragment class which call AesLaboratory for encryption where the key is hardcoded
-![](images/m0lecon-2025-img-3.png)
+![](./images/m0lecon-2025-img-3.png)
 so we create a python script to reverse this encryption which takes key and encryption token and output 
 we choose python because it has builtin tools
 ```python

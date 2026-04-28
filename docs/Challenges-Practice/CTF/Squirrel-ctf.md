@@ -1,5 +1,5 @@
 When we install the app we will be given a text box and a button when we enter something it gives wrong answer so lets go to jadx and find out whats causing and we couldnt findout much in main activity so after exploring jadx we found another man class called MainActivitykt 
-![](images/Squirrel-ctf-img-0.png)
+![](./images/Squirrel-ctf-img-0.png)
 we can find there is a check function where we have 2 arrays expected and key 
 It xors our input and key and stores the value in result and compares it with result the Composekt.resuekey is 207 since xoring is reversable we might able to find result 
 So we write a python function to get the expected output 
@@ -12,4 +12,3 @@ for i in range(len(expected)):
 print(result)
 ```
 and the output is `squ1rrel{k0tl1n_is_c001_n1s4l4}`
-<empty-block/>

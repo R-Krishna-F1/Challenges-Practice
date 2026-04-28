@@ -1,8 +1,8 @@
-<empty-block/>
+
 The challenge is similar 0x6 but this time we have to pass the required values to get the flag as arguments of a function
-![](images/Challenge-0x7-img-0.png)
+![](./images/Challenge-0x7-img-0.png)
 checker class
-![](images/Challenge-0x7-img-1.png)
+![](./images/Challenge-0x7-img-1.png)
 There are 2 methods to solve this challenge
 ### Method1:- passing the required arguments
 ```javascript
@@ -19,4 +19,3 @@ Java.performNow(function() {
 });
 ```
 ### Method2:- Hooking the constructor class
-<empty-block/>

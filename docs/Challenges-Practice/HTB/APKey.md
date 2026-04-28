@@ -18,7 +18,6 @@ Java.perform(function() {
 });
 ```
 so when you run the script we get the flag as a toast message
-![](images/APKey-img-0.png)
+![](./images/APKey-img-0.png)
 the jadx is
-![](images/APKey-img-1.png)
-<empty-block/>
+![](./images/APKey-img-1.png)

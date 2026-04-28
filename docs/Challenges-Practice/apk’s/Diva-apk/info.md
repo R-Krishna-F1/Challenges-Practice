@@ -5,7 +5,7 @@ Log buffers are used to temporarily store log data before it is writ
 - [**Error Handling**](https://www.bing.com/ck/a?!&&p=5fdf3fbcfc6f9baba72297d74fba55fef041d0f2dab2757cbf8245daf564ab83JmltdHM9MTc2OTM4NTYwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&u=a1aHR0cHM6Ly9kYmFwYXJhZGlzZS5jb20vMjAxOS8wNS93aGF0LWlzLXRoZS1sb2ctYnVmZmVyLWFuZC13aHktaXMtaXQtaW1wb3J0YW50Lw&ntb=1)[: Log buffers can be used to delay the emission of logs until certain conditions are met, allowing for better error handling and performance optimization.](https://www.bing.com/ck/a?!&&p=5fdf3fbcfc6f9baba72297d74fba55fef041d0f2dab2757cbf8245daf564ab83JmltdHM9MTc2OTM4NTYwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&u=a1aHR0cHM6Ly9kYmFwYXJhZGlzZS5jb20vMjAxOS8wNS93aGF0LWlzLXRoZS1sb2ctYnVmZmVyLWFuZC13aHktaXMtaXQtaW1wb3J0YW50Lw&ntb=1)
 - [**Data Integrity**](https://www.bing.com/ck/a?!&&p=b5ef07f9d7e1088d66bf416e782420bee7f744b1bb08c9ffce41b13929ef4dadJmltdHM9MTc2OTM4NTYwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&u=a1aHR0cHM6Ly93d3cuZmx5cml2ZXIuY29tL2cvbG9nLWZpbGUtYnVmZmVycw&ntb=1)[:](https://www.bing.com/ck/a?!&&p=b5ef07f9d7e1088d66bf416e782420bee7f744b1bb08c9ffce41b13929ef4dadJmltdHM9MTc2OTM4NTYwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&u=a1aHR0cHM6Ly93d3cuZmx5cml2ZXIuY29tL2cvbG9nLWZpbGUtYnVmZmVycw&ntb=1) [ Log buffers help maintain data integrity by ensuring that critical log messages are written to disk promptly](https://www.bing.com/ck/a?!&&p=b5ef07f9d7e1088d66bf416e782420bee7f744b1bb08c9ffce41b13929ef4dadJmltdHM9MTc2OTM4NTYwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&u=a1aHR0cHM6Ly93d3cuZmx5cml2ZXIuY29tL2cvbG9nLWZpbGUtYnVmZmVycw&ntb=1)
 - . summary, log buffers are essential for efficient data management, performance improvement, error handling, and data integrity in various systems and applications.
-<empty-block/>
+
 what are stored in logs ?
 **Logs in computing are records of events, actions, and transactions that occur within a system, application, or network, used for monitoring, troubleshooting, and security purposes**
 1. [**Timestamps**](https://www.bing.com/ck/a?!&&p=3a3f43827d3e6449746b7842ab0ec8c1a30b88856221c999ba895ff6aef27cf5JmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly9sb2dtYW5hZ2VyLmNvbS9ibG9nL2xvZy1tYW5hZ2VtZW50L2xvZy1maWxlcy1leHBsYWluZWQv&ntb=1)
@@ -14,27 +14,27 @@ what are stored in logs ?
 4. [**IP Addresses**](https://www.bing.com/ck/a?!&&p=f29768031940736fbdf1112654592f6c47a4d2bdf3ea555017d5a675d2975d9fJmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly93d3cubWV6bW8uY29tL2xlYXJuLWxvZy1tYW5hZ2VtZW50L2xvZy1kYXRhLXdoYXQtaXQtaXMtYW5kLXdoeS1pdC1tYXR0ZXJz&ntb=1)
 5. [**Resource Usage Data**](https://www.bing.com/ck/a?!&&p=f29768031940736fbdf1112654592f6c47a4d2bdf3ea555017d5a675d2975d9fJmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly93d3cubWV6bW8uY29tL2xlYXJuLWxvZy1tYW5hZ2VtZW50L2xvZy1kYXRhLXdoYXQtaXQtaXMtYW5kLXdoeS1pdC1tYXR0ZXJz&ntb=1)
 6. [**Request and Response Details**](https://www.bing.com/ck/a?!&&p=f29768031940736fbdf1112654592f6c47a4d2bdf3ea555017d5a675d2975d9fJmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly93d3cubWV6bW8uY29tL2xlYXJuLWxvZy1tYW5hZ2VtZW50L2xvZy1kYXRhLXdoYXQtaXQtaXMtYW5kLXdoeS1pdC1tYXR0ZXJz&ntb=1)
-<empty-block/>
+
 types of logs?
 - [**System Logs**](https://www.bing.com/ck/a?!&&p=3a3f43827d3e6449746b7842ab0ec8c1a30b88856221c999ba895ff6aef27cf5JmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly9sb2dtYW5hZ2VyLmNvbS9ibG9nL2xvZy1tYW5hZ2VtZW50L2xvZy1maWxlcy1leHBsYWluZWQv&ntb=1)
 - [**Application Logs**](https://www.bing.com/ck/a?!&&p=3a3f43827d3e6449746b7842ab0ec8c1a30b88856221c999ba895ff6aef27cf5JmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly9sb2dtYW5hZ2VyLmNvbS9ibG9nL2xvZy1tYW5hZ2VtZW50L2xvZy1maWxlcy1leHBsYWluZWQv&ntb=1)
 - [**Security Logs**](https://www.bing.com/ck/a?!&&p=3a3f43827d3e6449746b7842ab0ec8c1a30b88856221c999ba895ff6aef27cf5JmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly9sb2dtYW5hZ2VyLmNvbS9ibG9nL2xvZy1tYW5hZ2VtZW50L2xvZy1maWxlcy1leHBsYWluZWQv&ntb=1)
 - [**Network Logs**](https://www.bing.com/ck/a?!&&p=3a3f43827d3e6449746b7842ab0ec8c1a30b88856221c999ba895ff6aef27cf5JmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=3a1b280b-8884-6a1a-0a4a-3ee789676b9a&psq=what+data+is+stored+in+logs&u=a1aHR0cHM6Ly9sb2dtYW5hZ2VyLmNvbS9ibG9nL2xvZy1tYW5hZ2VtZW50L2xvZy1maWxlcy1leHBsYWluZWQv&ntb=1)
-<empty-block/>
+
 what kind of data is being stored in shared preference
 Shared Preferences in Android are used to store and retrieve small amounts of primitive data as key/value pairs. The types of data that can be stored in Shared Preferences include:
 • strings,int,boolean,charectar
-<empty-block/>
-<empty-block/>
+
+
 `this.mDB = openOrCreateDatabase("ids2", 0, null);`
 file name is ids2 and we are setting it private using 0 which means the database can be only accessed by the application its being created and data can be created only by the application  and null represents to use default set based operations instead of row operations like cursor 
 using row based opt or set opt depends on the query you give
-<empty-block/>
+
 set based means
 SQL was designed using **Set Theory**. When you write a `SELECT`, `UPDATE`, or `DELETE` statement, you aren't telling the database *how* to find the data; you are describing *what* the result should look like.
-<empty-block/>
+
 set based handles large data sets at a single time which is a reason it crashes sometimes while handling larger data sets using row by row operations like cursor we can do it step by step
-<empty-block/>
+
 how sql cipher works?
 - When you open a database with SQLCipher, you provide a **passphrase or raw key**.
 - SQLCipher derives the encryption key and uses it to **decrypt pages** from the database file **on the fly** as they are read into memory.
@@ -42,4 +42,3 @@ how sql cipher works?
 - This means **applications don’t need to manually encrypt/decrypt data** — it’s handled automatically.
 - **Key not stored in the database** — must be provided at runtime.
 - **Resistant to offline attacks** — without the key, the file is useless.
-<empty-block/>

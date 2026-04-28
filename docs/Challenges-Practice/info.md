@@ -3,7 +3,7 @@
 From this repo’s README, these are the entries that directly link to APKs or obviously-downloadable Android apps (i.e., CTF/vulnerable APKs):
 **Mobile CTF challenges (APK links)**
 - HacktivityCon CTF Mobile 2020 – `mobile_one.apk`
-<empty-block/>
+
 - Trend Micro CTF 2020 – `Keybox.apk`
 - Android Hacking Event 2017:
 	- `AES-Decrypt.apk` (inside zip)

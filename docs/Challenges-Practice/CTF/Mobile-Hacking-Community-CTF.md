@@ -3,3 +3,6 @@
 [Prints](./Mobile-Hacking-Community-CTF/Prints.md)
 [Root Quest](./Mobile-Hacking-Community-CTF/Root-Quest.md)
 [Spin and win](./Mobile-Hacking-Community-CTF/Spin-and-win.md)
+[The Knox club](./Mobile-Hacking-Community-CTF/The-Knox-club.md)
+[Snakes on a phone](./Mobile-Hacking-Community-CTF/Snakes-on-a-phone.md)
+[Shaked not stirred](./Mobile-Hacking-Community-CTF/Shaked-not-stirred.md)

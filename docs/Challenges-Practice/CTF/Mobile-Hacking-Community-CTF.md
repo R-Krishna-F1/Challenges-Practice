@@ -6,6 +6,5 @@
 [The Knox club](./Mobile-Hacking-Community-CTF/The-Knox-club.md)
 [Snakes on a phone](./Mobile-Hacking-Community-CTF/Snakes-on-a-phone.md)
 [Shaked not stirred](./Mobile-Hacking-Community-CTF/Shaked-not-stirred.md)
-[](./Mobile-Hacking-Community-CTF/Untitled.md)
 [Native Echos of Moria](./Mobile-Hacking-Community-CTF/Native-Echos-of-Moria.md)
 [No comments](./Mobile-Hacking-Community-CTF/No-comments.md)

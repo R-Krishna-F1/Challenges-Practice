@@ -1,6 +1,6 @@
 Opening the app we can see a click me button if we use frida trace we can see whats happening behind the button
  `frida-trace -U -j '`*`com.ad2001.frida0x3`*`!*' 'Frida 0x3'`
-<unknown url="https://app.notion.com/p/326fded52eb380eb97c8d305e704b7ea#326fded52eb380a784b3de775f643053" alt="embed"/>
+<unknown url="https://www.notion.so/326fded52eb380eb97c8d305e704b7ea#326fded52eb380a784b3de775f643053" alt="embed"/>
 it is activating onclick button in main activity if we explore it using jadx we can see that there is if else condition to load the flag
 ![](./images/Challenge-0x3-img-0.png)
 if the conditions meet we will get the flag
@@ -17,4 +17,4 @@ in this case too we have to use the same command as challenge 0x2 since the text
 `frida-ps -Ua`
 `frida -U -p 4942 -l 0x3.js `
 
-<unknown url="https://app.notion.com/p/326fded52eb380a784b3de775f643053#326fded52eb380a784b3de775f643053" alt="embed"/>
+<unknown url="https://www.notion.so/326fded52eb380a784b3de775f643053#326fded52eb380a784b3de775f643053" alt="embed"/>
